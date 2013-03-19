@@ -1,0 +1,61 @@
+Documentation Fast Incident Creator
+Table of contents
+§1. Functions[func]
+§2. 
+
+
+
+
+§1. Functions[func]
+
+mysqli_conn.php
+	get_mysqliData(SQLQuery)
+		Description
+			Establish connection to mysql database and execute a query.
+		Input
+			SQLQuery is a standard SQL query.
+		Return
+			Returns the results of the query or an error message if the connection or query failed.
+		
+		
+func.php
+	add_request(url, post_input)
+		Description
+			Adds new request to SDp using the REST API.
+		Input
+			url - the URL to the SDp server. e.g http://localhost:80/sdpapi/request/
+			post_input - need to be a hash containing
+				OPERATION_NAME - The type of operation in this case ADD_REQUEST 
+				TECHNICIAN_KEY - the generated technician API key.
+				INPUT_DATA - A XML string with the request.
+		Return
+			Function returns a hash containing STATUS=Success/Failure, MESSAGE and WORKORDERID.
+			
+			
+	close_request(url, workorderID)
+		Description
+			Closes the requested incident.
+		Input
+			url - the url to the specific incident. e.g http://localhost:80/sdpapi/request/1234
+			workorderID - the RequestID to be closed.
+		Return
+			Function returns a hash containing STATUS=Success/Failure and MESSAGE.
+			
+	create_xmlstring(XMLcontent, requester, technician, [opt])
+		Description
+			generates an XML string to be used when adding requests.
+		Input
+			XMLcontent - all information taken from the database.(hash)
+			requester - The requester(string)
+			technician - technician(string)
+			opt - not used in this version. Future uses might be to make changes to the original XMLcontent array.
+		Return
+			Function returns a string with the XML content.
+			
+	get_sdpoutput(output)
+		Description
+			Function handles all return information given from SDp. And reports that information to the user.
+		Input
+			output - the XML sent from the SDp server.
+		Return
+			Returns status and information from the XML in a hash.

@@ -1,0 +1,18 @@
+Database documentation
+
+Incidents
+	id
+	subject
+	description
+	requesttemplate
+	group
+	level
+	status
+	mode
+	requesttype
+	category
+	subcategory
+	item
+	impact
+	urgency
+	priority

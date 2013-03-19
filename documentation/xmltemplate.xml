@@ -1,0 +1,24 @@
+<!XML version="1.0" encoding="UTF-8">
+
+<Operation>
+	<Details>
+		<requester></requester>
+		<subject></subject>
+		<description></description>
+		<callbackURL>http://helpdesk.studentconsulting.net/CustomReportHandler.do</callbackURL>
+		<requesttemplate></requesttemplate>
+		<technician></technician>
+		<group></group>
+		<level></level>
+		<status></status>
+		<mode></mode>
+		<requesttype><requesttype>
+		<category></category>
+		<subcategory></subcategory>
+		<item></item>
+		<impact></impact>
+		<urgency></urgency>
+		<priority></priority>
+		
+	</Details>
+</operation>
