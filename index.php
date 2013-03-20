@@ -11,6 +11,7 @@
 	</head>
 	<body>
 		<form action="requesthandler.php" method="post">
+			<span id="text_form">Request Type:</span>
 			<input list="Requests" />
 			<datalist id="Requests">
 				<?php
@@ -23,6 +24,7 @@
 
 				?>
 			</datalist>
+			<span id="text_form">Technician Key:</span>
 			<input id="technician_key">
 			<datalist id="technician_key">
 				<option value="3F394415-32F0-4FD9-977A-C56F44D5A6F1" />
