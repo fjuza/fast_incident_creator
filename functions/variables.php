@@ -3,7 +3,7 @@
 	$url = "http://localhost:8080/sdpapi/request/";
 	$user = "MightNotBeARealUsername";
 	$password = "MightNotBeARealPassword!";
-	$dbName = "FIC";
+	$dbName = "fastic";
 	$callbackURL = "http://localhost:8080/CustomReportHandler.do";
 
 ?>

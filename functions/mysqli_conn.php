@@ -1,5 +1,5 @@
 <?php
-	include('variables.php');
+	include('functions/variables.php');
 	function get_mysqliData ($query){
 		$db = new mysqli($url, $user, $password, $dbName);
 		if($db->connect_errno > 0){
