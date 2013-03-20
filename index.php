@@ -14,10 +14,10 @@
 			<input list="Requests" />
 			<datalist id="Requests">
 				<?php
-				$sql = "SELECT reqTemplate FROM incidents WHERE active = 'true'";
+				$sql = "SELECT requesttemplate FROM incidents";
 				$output = get_mysqliData($sql);
-				foreach($output as $reqTemplate){
-					echo '<option value="$reqTemplate" />';
+				while($row = $output->fetch_assoc(){
+					echo '<option value="'. $row['requesttemplate'] . '" />';
 				}
 				?>
 			</datalist>
