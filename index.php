@@ -17,7 +17,7 @@
 				$sql = "SELECT requesttemplate FROM incidents";
 				$output = get_mysqliData($sql);
 				
-					while($row = $output->fetch_assoc(){
+					while($row = $output->fetch_assoc()){
 						echo "<option value='" . $row['requesttemplate'] . "' />";
 					}
 
