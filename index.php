@@ -23,12 +23,13 @@
 					}
 
 				?>
-			</datalist>
+			</select>
 			<span class="text_form">Technician Key:</span>
 			<input id="technician_key">
 			<select id="technician_key">
 				<option value="3F394415-32F0-4FD9-F44D-977A-C56F44D5A6F1" />
 				<option value="79C4E7D5-4BD9-427D-5050-BE56-4335050702AC" />
+			</select>
 			<span class="text_form">Requester: </span>
 			<input type="text" name="Requester" />
 			<span class="text_form">Technician: </span>
