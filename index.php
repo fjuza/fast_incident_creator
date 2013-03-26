@@ -14,7 +14,7 @@
 			<form action="requesthandler.php" method="post" id="form" name="form">
 			
 				<label>Request Type
-				<span id="small">What type of request has been submitted?</span>
+				<span class="small">What type of request has been submitted?</span>
 				</label>
 				<select id="Requests">
 					<?php
