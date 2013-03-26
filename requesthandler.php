@@ -3,7 +3,7 @@
 include_once('functions/mysqli_conn.php');
 include_once('functions/func.php');
 include('functions/variables.php');
-if(isset($_POST['requests']) && isset($_POST['Requester']) && isset($_POST['Technician']) && isset($_POST['close_request']) && isset($_POST['technician_key']) ){
+if(isset($_POST['requests']) && isset($_POST['Requester']) && isset($_POST['Technician']) && isset($_POST['technician_key']) ){
 	
 	$requests = $_POST['requests'];
 	$requester = $_POST['Requester'];
@@ -13,7 +13,8 @@ if(isset($_POST['requests']) && isset($_POST['Requester']) && isset($_POST['Tech
 		
 	$SQLquery = "SELECT * FROM incidents WHERE reqTemplate = " . $requests;
 		$data = get_mysqliData($SQLquery);
-		
+		while($r = $data->fetch_assoc()){
+		}
 		if(isset($data)){
 			foreach($data as $x=>$x_val){
 				$arrXMLContent = array($x=>$x_val);

@@ -47,7 +47,7 @@
 	}
 	
 	function close_request($url, $workorderID, $techniciankey){
-	// $url contains http://helpdesk.studentconsulting.net/sdpapi/request/<workorderid>
+	// $url contains http://localhost:8080/sdpapi/request/<workorderid>
 	$url = $url . $workorderID;
 		$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL, $url);
