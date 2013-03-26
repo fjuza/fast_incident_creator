@@ -13,7 +13,7 @@
 		<form action="requesthandler.php" method="post">
 			<span id="text_form">Request Type:</span>
 			<input list="Requests" />
-			<datalist id="Requests">
+			<select id="Requests">
 				<?php
 				$sql = "SELECT requesttemplate FROM incidents";
 				$output = get_mysqliData($sql);
@@ -26,7 +26,7 @@
 			</datalist>
 			<span class="text_form">Technician Key:</span>
 			<input id="technician_key">
-			<datalist id="technician_key">
+			<select id="technician_key">
 				<option value="3F394415-32F0-4FD9-F44D-977A-C56F44D5A6F1" />
 				<option value="79C4E7D5-4BD9-427D-5050-BE56-4335050702AC" />
 			<span class="text_form">Requester: </span>
