@@ -14,7 +14,7 @@ if(isset($_POST['request']) && isset($_POST['requester']) && isset($_POST['techn
 	}
 
 	$requests = $_POST['request'];
-	$requester = $_POST['Requester'];
+	$requester = $_POST['requester'];
 	$technician = $_POST['technician'];
 	$techniciankey = $_POST['technician_key'];
 	if(isset($_POST['close_request'])){
