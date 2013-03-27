@@ -7,13 +7,13 @@ if($DEBUG == "true"){
 	echo "<span>IN DEBUGMODE</span><br />";
 }
 
-if(isset($_POST['requests']) && isset($_POST['requester']) && isset($_POST['technician']) && isset($_POST['technician_key']) ){
+if(isset($_POST['request']) && isset($_POST['requester']) && isset($_POST['technician']) && isset($_POST['technician_key']) ){
 
 	if($DEBUG == "true"){
 		echo "<br /> Check post-attributes: Ok <br />";
 	}
 
-	$requests = $_POST['requests'];
+	$requests = $_POST['request'];
 	$requester = $_POST['Requester'];
 	$technician = $_POST['technician'];
 	$techniciankey = $_POST['technician_key'];

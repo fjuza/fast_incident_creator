@@ -16,7 +16,7 @@
 				<label>Request Type
 				<span class="small">What type of request has been submitted?</span>
 				</label>
-				<select name="requests" id="requests">
+				<select name="request" id="request">
 					<?php
 					$sql = "SELECT id, requesttemplate FROM incidents";
 					$output = get_mysqliData($sql);
