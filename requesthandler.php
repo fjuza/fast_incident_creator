@@ -40,7 +40,7 @@ if(isset($_POST['request']) && isset($_POST['requester']) && isset($_POST['techn
 			if($DEBUG == "true"){
 				//echo $r;
 				
-				echo "<br /> ID: " . $r['id'] . "Subject: " . $r['subject'] . "Description: " . $r['description'] . "Request Template: " . $r['requesttemplate'] . "Group" . $r['group'] . "Level: " . $r['level'] . "Status: " . $r['status'] . "Mode: " . $r['mode'] . "Request Type: " . $r['requesttype'] . "Category: " . $r['category'] . "Subcategory: " . $r['subcategory'] . "Item: " $r['item'] . "Impact: " . $r['impact'] . "Urgency: " . $r['urgency'] . "Priority: " . $r['priority'] . "<b>End of Line</b>";
+				echo "<br /> ID: " . $r['id'] . "Subject: " . $r['subject'] . "Description: " . $r['description'] . "Request Template: " . $r['requesttemplate'] . "Group" . $r['group'] . "Level: " . $r['level'] . "Status: " . $r['status'] . "Mode: " . $r['mode'] . "Request Type: " . $r['requesttype'] . "Category: " . $r['category'] . "Subcategory: " . $r['subcategory'] . "Item: . " $r['item'] . "Impact: " . $r['impact'] . "Urgency: " . $r['urgency'] . "Priority: " . $r['priority'] . "<b>End of Line</b>";
 			}
 			foreach($data as $x=>$x_val){
 				$arrXMLContent = array($x=>$x_val);
