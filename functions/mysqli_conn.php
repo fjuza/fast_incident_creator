@@ -26,13 +26,12 @@
 		
 		if($connection->connect_errno > 0){
 			return $db->connect_error;
+		} else {	
+			if( !$result = $connection->query($query) ) {
+				return $db->error;
+			} else {
+				return $result;
+			}
 		}
-		if(!$result = $connection->query($query){
-			return $db->error;
-		}else{
-			return $result;
-		}
-		
-		
 	}
 ?>
