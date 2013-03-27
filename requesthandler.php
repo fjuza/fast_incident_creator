@@ -4,20 +4,22 @@ include_once('functions/mysqli_conn.php');
 include_once('functions/func.php');
 include('functions/variables.php');
 if($DEBUG == "true"){
-	echo "<span>IN DEBUGMODE</span>";
+	echo "<span>IN DEBUGMODE</span><br />";
 }
 
 if(isset($_POST['requests']) && isset($_POST['requester']) && isset($_POST['technician']) && isset($_POST['technician_key']) ){
 
 	if($DEBUG == "true"){
-		echo "test";
+		echo "<br /> Check post-attributes: Ok <br />";
 	}
 
 	$requests = $_POST['requests'];
 	$requester = $_POST['Requester'];
-	$technician = $_POST['Technician'];
+	$technician = $_POST['technician'];
 	$techniciankey = $_POST['technician_key'];
-	$close_request = $_POST['close_request'];
+	if(isset($_POST['close_request'])){
+		$close_request = $_POST['close_request'];
+	}
 	if($DEBUG == "true"){
 		echo "Input from form.";
 		echo "Requests: " . $requests . "<br />";
