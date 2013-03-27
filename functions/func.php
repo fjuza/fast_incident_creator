@@ -69,7 +69,8 @@
 						$status = $content->operation[0]->status;
 						$message = $content->operation[0]->message;
 						$arrReturn = array("status"=>$status, "message"=>$message);
-						//return $arrReturn;
+						$returnString = '<div class="returnNote"> <label>Status <span class="small"' . $arrReturn['status'] . "</span> <label> Message <span class='small'" . $arrReturn['message'] . "</span></label></div>";
+						return $returnString;
 
 					break;
 				case 'ADD_REQUEST':
@@ -77,15 +78,11 @@
 						$message = $content->operation[0]->result->message;
 						$workorderID = $content->operation[0]->details->workorderid;
 						$arrReturn = array("status"=>$status, "message"=>$message, "workorderID"=>$workorderID);
-						$returnString = '<div class="returnNote"> <label>Status <span class="small"' . $arrReturn['status'] "</span> <label> Message <span class='small'" . $arrReturn['message'] . "Workorder ID" . $arrReturn['workorderID'];
+						$returnString = '<div class="returnNote"> <label>Status <span class="small"' . $arrReturn['status'] . "</span> <label> Message <span class='small'" . $arrReturn['message'] . "</span></label><label>Workorder ID<span class='small'>" . $arrReturn['workorderID'] . "</span></label></div>";
 
-						//return $arrReturn;
+						return $returnString;
 					break;
 			}
-		}
-		if(isset($arrReturn['workorderID'])){
-		} else [
-		
 		}
 	}
 
