@@ -34,7 +34,9 @@ if(isset($_POST['requests']) && isset($_POST['requester']) && isset($_POST['tech
 		$data = get_mysqliData($SQLquery);
 		while($r = $data->fetch_assoc()){
 			if($DEBUG == "true"){
-				echo "ID: " . $r['id'] . "Subject: " . $r['subject'] . "Description: " . $r['description'] . "Request Template: " . $r['requesttemplate'] . "Group" . $r['group'] . "Level: " . $r['level'] . "Status: " . $r['status'] . "Mode: " . $r['mode'] . "Request Type: " . $r['requesttype'] . "Category: " . $r['category'] . "Subcategory: " . $r['subcategory'] . "Item: " $r['item'] . "Impact: " . $r['impact'] . "Urgency: " . $r['urgency'] . "Priority: " . $r['priority'] . "<b>End of Line</b>";
+				echo $r;
+				
+				//echo "ID: " . $r['id'] . "Subject: " . $r['subject'] . "Description: " . $r['description'] . "Request Template: " . $r['requesttemplate'] . "Group" . $r['group'] . "Level: " . $r['level'] . "Status: " . $r['status'] . "Mode: " . $r['mode'] . "Request Type: " . $r['requesttype'] . "Category: " . $r['category'] . "Subcategory: " . $r['subcategory'] . "Item: " $r['item'] . "Impact: " . $r['impact'] . "Urgency: " . $r['urgency'] . "Priority: " . $r['priority'] . "<b>End of Line</b>";
 			}
 			foreach($data as $x=>$x_val){
 				$arrXMLContent = array($x=>$x_val);
