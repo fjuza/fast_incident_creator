@@ -62,15 +62,14 @@
 		return $output;
 	}
 	function get_sdpoutput($output){
-		$content = SimpleXMLElement($output);
+		$content = new SimpleXMLElement($output);
 		foreach($content->operation[0] as $operation){
 			switch((string) $operation['name']){
 				case 'CLOSE_REQUEST':
 						$status = $content->operation[0]->status;
 						$message = $content->operation[0]->message;
 						$arrReturn = array("status"=>$status, "message"=>$message);
-						$returnString = '<div class="returnNote"> <label>Status <span class="small"' . $arrReturn['status'] . "</span> <label> Message <span class='small'" . $arrReturn['message'] . "</span></label></div>";
-						return $returnString;
+						return $arrReturn;
 
 					break;
 				case 'ADD_REQUEST':
@@ -78,9 +77,7 @@
 						$message = $content->operation[0]->result->message;
 						$workorderID = $content->operation[0]->details->workorderid;
 						$arrReturn = array("status"=>$status, "message"=>$message, "workorderID"=>$workorderID);
-						$returnString = '<div class="returnNote"> <label>Status <span class="small"' . $arrReturn['status'] . "</span> <label> Message <span class='small'" . $arrReturn['message'] . "</span></label><label>Workorder ID<span class='small'>" . $arrReturn['workorderID'] . "</span></label></div>";
-
-						return $returnString;
+						return $arrReturn;
 					break;
 			}
 		}

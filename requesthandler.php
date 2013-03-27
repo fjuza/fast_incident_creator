@@ -19,6 +19,8 @@ if(isset($_POST['requests']) && isset($_POST['requester']) && isset($_POST['tech
 	$techniciankey = $_POST['technician_key'];
 	if(isset($_POST['close_request'])){
 		$close_request = $_POST['close_request'];
+	} else {
+		$close_request  = NULL;
 	}
 	if($DEBUG == "true"){
 		echo "Input from form.";
