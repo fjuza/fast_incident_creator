@@ -31,6 +31,7 @@
 	}
 	
 	function create_xmlstring($XMLContent, $requester, $technician, $opt = null ){
+	include 'variables.php';
 		//building the XML string.
 		if($opt){
 			//Later addons. For making changes to the request perhaps?
@@ -63,7 +64,7 @@
 	}
 	function get_sdpoutput($output){
 		$content = new SimpleXMLElement($output);
-		foreach($content->operation[0] as $operation){
+		foreach($content->operation as $operation){
 			switch((string) $operation['name']){
 				case 'CLOSE_REQUEST':
 						$status = $content->operation[0]->status;

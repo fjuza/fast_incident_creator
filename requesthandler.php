@@ -20,7 +20,7 @@ if(isset($_POST['request']) && isset($_POST['requester']) && isset($_POST['techn
 	if(isset($_POST['close_request'])){
 		$close_request = $_POST['close_request'];
 	} else {
-		$close_request  = NULL;
+		$close_request  = "No";
 	}
 	if($DEBUG == "true"){
 		echo "Input from form.";
