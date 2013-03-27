@@ -11,18 +11,18 @@
 	</head>
 	<body>
 		<div id="stylized" class="commitForm">
-			<form action="requesthandler.php" method="post" id="form" name="form">
+			<form action="requesthandler.php" method="POST" id="form" name="form">
 			
 				<label>Request Type
 				<span class="small">What type of request has been submitted?</span>
 				</label>
-				<select id="Requests">
+				<select name="requests" id="requests">
 					<?php
-					$sql = "SELECT requesttemplate FROM incidents";
+					$sql = "SELECT id, requesttemplate FROM incidents";
 					$output = get_mysqliData($sql);
 					
 						while($row = $output->fetch_assoc()){
-							echo "<option value='" . $row['requesttemplate'] . "'>".$row['requesttemplate'] . "</option>";
+							echo "<option value='" . $row['id'] . "'>".$row['requesttemplate'] . "</option>";
 						}
 					?>
 				</select>
@@ -30,7 +30,7 @@
 				<label>Technician Key
 				<span class="small">Select the technician key.</span>
 				</label>
-				<select id="technician_key">
+				<select name="technician_key" id="technician_key">
 					<option value="3F394415-32F0-4FD9-F44D-977A-C56F44D5A6F1">Freddie</option>
 					<option value="79C4E7D5-4BD9-427D-5050-BE56-4335050702AC">Erik</option>
 				</select>
@@ -39,11 +39,11 @@
 				<span class="small">Who submitted the request.</span>
 				</label>
 				
-				<input type="text" name="Requester" />
+				<input type="text" name="requester" />
 				<label>Technician
 				<span class="small">Who recievied the request.</span>
 				</label>
-				<input type="text" name="Technician" />
+				<input type="text" name="technician" />
 				
 				<label>Close Request
 				<span class="small">Should the request be closed aswell?</span>

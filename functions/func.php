@@ -1,6 +1,8 @@
 <?php
 	include('variables.php');
-	
+	function show_returnMessage($XMLmessage){
+		
+	}
 	function add_request($url, $post_input)
 	{
 		foreach($post_input as $x=>$x_val)
@@ -67,7 +69,7 @@
 						$status = $content->operation[0]->status;
 						$message = $content->operation[0]->message;
 						$arrReturn = array("status"=>$status, "message"=>$message);
-						return $arrReturn;
+						//return $arrReturn;
 
 					break;
 				case 'ADD_REQUEST':
@@ -75,9 +77,15 @@
 						$message = $content->operation[0]->result->message;
 						$workorderID = $content->operation[0]->details->workorderid;
 						$arrReturn = array("status"=>$status, "message"=>$message, "workorderID"=>$workorderID);
-						return $arrReturn;
+						$returnString = '<div class="returnNote"> <label>Status <span class="small"' . $arrReturn['status'] "</span> <label> Message <span class='small'" . $arrReturn['message'] . "Workorder ID" . $arrReturn['workorderID'];
+
+						//return $arrReturn;
 					break;
 			}
+		}
+		if(isset($arrReturn['workorderID'])){
+		} else [
+		
 		}
 	}
 
