@@ -39,8 +39,22 @@ if(isset($_POST['request']) && isset($_POST['requester']) && isset($_POST['techn
 		while($r = $data->fetch_assoc()){
 			if($DEBUG == "true"){
 				//echo $r;
-				
-				echo "<br /> ID: " . $r['id'] . "Subject: " . $r['subject'] . "Description: " . $r['description'] . "Request Template: " . $r['requesttemplate'] . "Group" . $r['group'] . "Level: " . $r['level'] . "Status: " . $r['status'] . "Mode: " . $r['mode'] . "Request Type: " . $r['requesttype'] . "Category: " . $r['category'] . "Subcategory: " . $r['subcategory'] . "Item: . " $r['item'] . "Impact: " . $r['impact'] . "Urgency: " . $r['urgency'] . "Priority: " . $r['priority'] . "<b>End of Line</b>";
+				echo "ID: ". $r['id'] . "<br>";
+				echo "Subject: " . $r['subject'] . "<br>";
+				echo "Dscription: " . $r['description'] . "<br>";
+				echo "Request Type: " . $r['requesttemplate'] . "<br>";
+				echo "Group: " . $r['group'] . "<br>";
+				echo "Level: " . $r['level'] . "<br>";
+				echo "Status: " . $r['status'] . "<br>";
+				echo "Mode: " . $r['mode'] . "<br>";
+				echo "Request type: " . $r['requesttype'] . "<br>";
+				echo "Category: " . $r['category'] . "<br>";
+				echo "Subcategory: " . $r['subcategory'] . "<br>";
+				echo "Item: " . $r['item'] . "<br>";
+				echo "Urgency: " . $r['urgency'] . "<br>";
+				echo "Impact: " . $r['impact'] . "<br>";
+				echo "Priority: " . $r['priority'] . "<br>";
+				//echo "<br /> ID: " . $r['id'] . "Subject: " . $r['subject'] . "Description: " . $r['description'] . "Request Template: " . $r['requesttemplate'] . "Group: " . $r['group'] . "Level: " . $r['level'] . "Status: " . $r['status'] . "Mode: " . $r['mode'] . "Request Type: " . $r['requesttype'] . "Category: " . $r['category'] . "Subcategory: " . $r['subcategory'] . "Item: . " $r['item'] . "Impact: " . $r['impact'] . "Urgency: " . $r['urgency'] . "Priority: " . $r['priority'] . "<b>End of Line</b>";
 			}
 			foreach($data as $x=>$x_val){
 				$arrXMLContent = array($x=>$x_val);
