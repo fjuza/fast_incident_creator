@@ -27,8 +27,8 @@ if(isset($_POST['request']) && isset($_POST['requester']) && isset($_POST['techn
 		echo "Requests: " . $requests . "<br />";
 		echo "Requester: " . $requester . "<br />";
 		echo "Technician: " . $technician . "<br />";
-		echo "Technician Key" . $techniciankey . "<br />";
-		echo "Close Request?" . $close_request . "<br />";
+		echo "Technician Key: " . $techniciankey . "<br />";
+		echo "Close Request? " . $close_request . "<br />";
 		echo "End of output. <br />";
 	}
 	$SQLquery = "SELECT * FROM incidents WHERE id = " . $requests;
@@ -39,7 +39,7 @@ if(isset($_POST['request']) && isset($_POST['requester']) && isset($_POST['techn
 		while($r = $data->fetch_assoc()){
 			if($DEBUG == "true"){
 				//echo $r;
-				echo "ID: ". $r['id'] . "<br>";
+				echo "<br>ID: ". $r['id'] . "<br>";
 				echo "Subject: " . $r['subject'] . "<br>";
 				echo "Dscription: " . $r['description'] . "<br>";
 				echo "Request Type: " . $r['requesttemplate'] . "<br>";
@@ -54,7 +54,6 @@ if(isset($_POST['request']) && isset($_POST['requester']) && isset($_POST['techn
 				echo "Urgency: " . $r['urgency'] . "<br>";
 				echo "Impact: " . $r['impact'] . "<br>";
 				echo "Priority: " . $r['priority'] . "<br>";
-				//echo "<br /> ID: " . $r['id'] . "Subject: " . $r['subject'] . "Description: " . $r['description'] . "Request Template: " . $r['requesttemplate'] . "Group: " . $r['group'] . "Level: " . $r['level'] . "Status: " . $r['status'] . "Mode: " . $r['mode'] . "Request Type: " . $r['requesttype'] . "Category: " . $r['category'] . "Subcategory: " . $r['subcategory'] . "Item: . " $r['item'] . "Impact: " . $r['impact'] . "Urgency: " . $r['urgency'] . "Priority: " . $r['priority'] . "<b>End of Line</b>";
 			}
 			foreach($data as $x=>$x_val){
 				$arrXMLContent = array($x=>$x_val);
@@ -65,13 +64,23 @@ if(isset($_POST['request']) && isset($_POST['requester']) && isset($_POST['techn
 				"TECHNICIAN_KEY" => $techniciankey,
 				"INPUT_DATA" => $XMLString
 			);
+			
 			if($DEBUG == "true"){
-				echo $post_input;
+				echo "<br>post_input string.<br>";
+				foreach($test as $x=>$x_val){
+					echo $x . ": " . $x_val . "<br>";
+				}
 			}
+			
 			$returnAddRequest = add_request($url, $post_input);
-			get_sdpoutput($returnAddRequest);
+			$output = get_sdpoutput($returnAddRequest);
 			
-			
+			if($DEBUG == "true"){
+				echo "<br> output from ServiceDesk Plus: <br>";
+				foreach($output as $x=>$x_val){
+					echo $x . ": " . $x_val . "<br>";
+				}
+			}
 		}
 	if( $close_request == 'true' && isset($workorderID) ){
 		$reqCloseConfirm = close_request($url, $workorderID, $techniciankey);
