@@ -84,7 +84,14 @@ if(isset($_POST['request']) && isset($_POST['requester']) && isset($_POST['techn
 		}
 	if( $close_request == 'true' && isset($workorderID) ){
 		$reqCloseConfirm = close_request($url, $workorderID, $techniciankey);
-		get_sdpoutput($reqCloseConfirm);
+		$ output = get_sdpoutput($reqCloseConfirm);
+		
+		if($DEBUG == "true"){
+				echo "<br> output from ServiceDesk Plus: <br>";
+				foreach($output as $x=>$x_val){
+					echo $x . ": " . $x_val . "<br>";
+				}
+			}
 	}
 }
 
