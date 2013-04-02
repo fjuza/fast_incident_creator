@@ -46,7 +46,7 @@
 				<input type="text" name="technician" />
 				
 				<label>Close Request
-				<span class="small">Should the request be closed aswell?</span>
+				<span class="small">Should the request be closed?</span>
 				</label>
 				
 				<input type="checkbox" value="true" name="close_request" />

@@ -17,6 +17,7 @@
 			return $db->error;
 		}else{
 			return $result;
+			$db->close_connection;
 		}
 	}
 	

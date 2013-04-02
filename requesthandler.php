@@ -1,4 +1,5 @@
 <?php
+//Set to true to get debug output. This is for development at the moment. But it might be useful when setting it up in new environments too.
 $DEBUG = "true";
 include_once('functions/mysqli_conn.php');
 include_once('functions/func.php');
