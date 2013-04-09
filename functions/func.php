@@ -1,7 +1,9 @@
 <?php
 	include('variables.php');
 	function show_returnMessage($XMLmessage){
-		
+		foreach($XMLmessage as $x => $x_val){
+			
+		}
 	}
 	function add_request($url, $post_input)
 	{
@@ -71,8 +73,8 @@
 						$message = $content->operation[0]->message;
 						$arrReturn = array("status"=>$status, "message"=>$message);
 						return $arrReturn;
-
 					break;
+
 				case 'ADD_REQUEST':
 						$status = $content->operation[0]->result->status;
 						$message = $content->operation[0]->result->message;

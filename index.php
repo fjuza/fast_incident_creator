@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <?php
-	$title = "Bloody Fast Incident Creator";
+	$title = "FastiC - Submit form";
 	include_once('functions/mysqli_conn.php');
 	include('functions/variables.php');
 ?>
@@ -11,8 +11,8 @@
 	</head>
 	<body>
 		<div id="stylized" class="commitForm">
-			<form action="requesthandler.php" method="POST" id="form" name="form">
-			
+			<form action="requesthandler.php" method="POST" id="form" name="form"> 
+
 				<label>Request Type
 				<span class="small">What type of request has been submitted?</span>
 				</label>

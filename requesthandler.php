@@ -30,7 +30,7 @@ if(isset($_POST['request']) && isset($_POST['requester']) && isset($_POST['techn
 		echo "Technician: " . $technician . "<br />";
 		echo "Technician Key: " . $techniciankey . "<br />";
 		echo "Close Request? " . $close_request . "<br />";
-		echo "End of output. <br />";
+		echo "End of output. <br /><br/>";
 	}
 	$SQLquery = "SELECT * FROM incidents WHERE id = " . $requests;
 	if($DEBUG == "true"){
@@ -39,7 +39,6 @@ if(isset($_POST['request']) && isset($_POST['requester']) && isset($_POST['techn
 		$data = get_mysqliData($SQLquery);
 		while($r = $data->fetch_assoc()){
 			if($DEBUG == "true"){
-				//echo $r;
 				echo "<br>ID: ". $r['id'] . "<br>";
 				echo "Subject: " . $r['subject'] . "<br>";
 				echo "Dscription: " . $r['description'] . "<br>";
@@ -56,10 +55,15 @@ if(isset($_POST['request']) && isset($_POST['requester']) && isset($_POST['techn
 				echo "Impact: " . $r['impact'] . "<br>";
 				echo "Priority: " . $r['priority'] . "<br>";
 			}
-			foreach($data as $x=>$x_val){
+			foreach($r as $x=>$x_val){
 				$arrXMLContent = array($x=>$x_val);
 			}
 			$XMLString = create_xmlstring($arrXMLContent, $requester, $technician);
+			
+			if($DEBUG == "true") {
+				echo "<br/>XMLString: " . $XMLString . "<br/>";
+			}
+			
 			$post_input = array(
 				"OPERATION_NAME" => "ADD_REQUEST",
 				"TECHNICIAN_KEY" => $techniciankey,
@@ -88,11 +92,11 @@ if(isset($_POST['request']) && isset($_POST['requester']) && isset($_POST['techn
 		$output = get_sdpoutput($reqCloseConfirm);
 		
 		if($DEBUG == "true"){
-				echo "<br> output from ServiceDesk Plus: <br>";
-				foreach($output as $x=>$x_val){
-					echo $x . ": " . $x_val . "<br>";
-				}
+			echo "<br> output from ServiceDesk Plus: <br>";
+			foreach($output as $x=>$x_val){
+				echo $x . ": " . $x_val . "<br>";
 			}
+		}
 	}
 }
 
