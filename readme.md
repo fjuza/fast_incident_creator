@@ -3,6 +3,9 @@ Fast Incident Creator 0.2a
 
 Still some major issues to fix before the software is usable. See changelog for what is new since last.
 
+Change
+
+
 
 Change log 2013.04.01
 --------------------------
