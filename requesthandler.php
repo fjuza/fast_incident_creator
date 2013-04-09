@@ -55,9 +55,10 @@ if(isset($_POST['request']) && isset($_POST['requester']) && isset($_POST['techn
 				echo "Impact: " . $r['impact'] . "<br>";
 				echo "Priority: " . $r['priority'] . "<br>";
 			}
-			foreach($r as $x=>$x_val){
-				$arrXMLContent = array($x=>$x_val);
-			}
+			$arrXMLContent = array('id'=>$r['id'], 'subject=>$r['subject'], 'description'=>$r['description'], 'requesttemplate'=>$r['requesttemplate'], 'group'=>$r['group'], 'level'=>$r['level'], 'status'=>$r['status'], 'mode'=>$r['mode'], 'requesttype'=>$r['requesttype'], 'category'=>$r['category'], 'subcategory'=>$r['subcategory'], 'item'=>$r['item'], 'impact'=>$r['impact'], 'urgency'=>$r['urgency'], 'priority'=>$r['priority']);
+		//	foreach($r as $x=>$x_val){
+		//		$arrXMLContent = array($x=>$x_val);
+		//	}
 			$XMLString = create_xmlstring($arrXMLContent, $requester, $technician);
 			
 			if($DEBUG == "true") {
@@ -98,6 +99,8 @@ if(isset($_POST['request']) && isset($_POST['requester']) && isset($_POST['techn
 			}
 		}
 	}
+	//header('Location: http://localhost:8080/fastic/Fast_Incident_Creator/index.php');
+	
 }
 
 ?>
