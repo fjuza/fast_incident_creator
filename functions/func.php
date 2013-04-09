@@ -65,26 +65,32 @@
 		return $output;
 	}
 	function get_sdpoutput($output){
-		$content = new SimpleXMLElement($output);
-		foreach($content->operation as $operation){
-			switch((string) $operation['name']){
-				case 'CLOSE_REQUEST':
-						$status = $content->operation[0]->status;
-						$message = $content->operation[0]->message;
-						$arrReturn = array("AMIHERECLOSEREQ?"=>"YES", "status"=>$status, "message"=>$message);
-						return $arrReturn;
-					break;
+		xmllib_use_internal_errors(true);
+		try{
+			$content = new SimpleXMLElement($output);
+			foreach($content->operation as $operation){
+				switch((string) $operation['name']){
+					case 'CLOSE_REQUEST':
+							$status = $content->operation[0]->status;
+							$message = $content->operation[0]->message;
+							$arrReturn = array("AMIHERECLOSEREQ?"=>"YES", "status"=>$status, "message"=>$message);
+							return $arrReturn;
+						break;
 
-				case 'ADD_REQUEST':
-						$status = $content->operation[0]->result->status;
-						$message = $content->operation[0]->result->message;
-						if($content->operation[0]->details->workorderid){
-							$workorderID = $content->operation[0]->details->workorderid;
-						}
-						$arrReturn = array("AMIHEREADDREQ?"=>"YES", "status"=>$status, "message"=>$message, "workorderID"=>$workorderID);
-						return $arrReturn;
-					break;
+					case 'ADD_REQUEST':
+							$status = $content->operation[0]->result->status;
+							$message = $content->operation[0]->result->message;
+							if($content->operation[0]->details->workorderid){
+								$workorderID = $content->operation[0]->details->workorderid;
+							}
+							$arrReturn = array("AMIHEREADDREQ?"=>"YES", "status"=>$status, "message"=>$message, "workorderID"=>$workorderID);
+							return $arrReturn;
+						break;
+				}
 			}
+		} catch (exception $e) {
+			$returnArr = array("status"=>"error", "message"=>$e);
+			return $returnArr;
 		}
 	}
 
