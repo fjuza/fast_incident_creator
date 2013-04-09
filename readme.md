@@ -3,11 +3,21 @@ Fast Incident Creator 0.2a
 
 Still some major issues to fix before the software is usable. See changelog for what is new since last.
 
-Change
+Changelog 2013.04.09
+---------------------------------
+
+* Update to README.md
+* Fixed some small issues with PHP code. 
+* Added more debug output in requesthandler.php.
+
+Known issues 2013.04.09
+---------------------------
+
+* Still some kinks when POSTing requests to ServiceDesk Plus. 
+* Some issues in handling the XML respons from ServiceDesk Plus.  
 
 
-
-Change log 2013.04.01
+Changelog 2013.04.01
 --------------------------
 
 * Added look and feel
@@ -19,12 +29,6 @@ Known issues 2013.04.01
 ---------------------------
 
 * Still some kinks when POSTing requests to ServiceDesk Plus. 
-
-
-
-
-
-
 
 
 
