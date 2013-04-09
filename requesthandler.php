@@ -21,10 +21,10 @@ if(isset($_POST['request']) && isset($_POST['requester']) && isset($_POST['techn
 	if(isset($_POST['close_request'])){
 		$close_request = $_POST['close_request'];
 	} else {
-		$close_request  = "No";
+		$close_request  = "false";
 	}
 	if($DEBUG == "true"){
-		echo "Input from form.";
+		echo "Input from form.<br/>";
 		echo "Requests: " . $requests . "<br />";
 		echo "Requester: " . $requester . "<br />";
 		echo "Technician: " . $technician . "<br />";
@@ -55,7 +55,7 @@ if(isset($_POST['request']) && isset($_POST['requester']) && isset($_POST['techn
 				echo "Impact: " . $r['impact'] . "<br>";
 				echo "Priority: " . $r['priority'] . "<br>";
 			}
-			$arrXMLContent = array('id'=>$r['id'], 'subject=>$r['subject'], 'description'=>$r['description'], 'requesttemplate'=>$r['requesttemplate'], 'group'=>$r['group'], 'level'=>$r['level'], 'status'=>$r['status'], 'mode'=>$r['mode'], 'requesttype'=>$r['requesttype'], 'category'=>$r['category'], 'subcategory'=>$r['subcategory'], 'item'=>$r['item'], 'impact'=>$r['impact'], 'urgency'=>$r['urgency'], 'priority'=>$r['priority']);
+			$arrXMLContent = array('id'=>$r['id'], 'subject'=>$r['subject'], 'description'=>$r['description'], 'requesttemplate'=>$r['requesttemplate'], 'group'=>$r['group'], 'level'=>$r['level'], 'status'=>$r['status'], 'mode'=>$r['mode'], 'requesttype'=>$r['requesttype'], 'category'=>$r['category'], 'subcategory'=>$r['subcategory'], 'item'=>$r['item'], 'impact'=>$r['impact'], 'urgency'=>$r['urgency'], 'priority'=>$r['priority']);
 		//	foreach($r as $x=>$x_val){
 		//		$arrXMLContent = array($x=>$x_val);
 		//	}
@@ -73,7 +73,7 @@ if(isset($_POST['request']) && isset($_POST['requester']) && isset($_POST['techn
 			
 			if($DEBUG == "true"){
 				echo "<br>post_input string.<br>";
-				foreach($test as $x=>$x_val){
+				foreach($post_input as $x=>$x_val){
 					echo $x . ": " . $x_val . "<br>";
 				}
 			}
@@ -82,9 +82,13 @@ if(isset($_POST['request']) && isset($_POST['requester']) && isset($_POST['techn
 			$output = get_sdpoutput($returnAddRequest);
 			
 			if($DEBUG == "true"){
-				echo "<br> output from ServiceDesk Plus: <br>";
-				foreach($output as $x=>$x_val){
-					echo $x . ": " . $x_val . "<br>";
+				echo "<br> output from ServiceDesk Plus(adding request): <br>";
+				echo $output;
+				echo $returnAddRequest;
+				if(isset($output)){
+					foreach($output as $x=>$x_val){
+						echo $x . ": " . $x_val . "<br>";
+					}
 				}
 			}
 		}
@@ -92,8 +96,8 @@ if(isset($_POST['request']) && isset($_POST['requester']) && isset($_POST['techn
 		$reqCloseConfirm = close_request($url, $workorderID, $techniciankey);
 		$output = get_sdpoutput($reqCloseConfirm);
 		
-		if($DEBUG == "true"){
-			echo "<br> output from ServiceDesk Plus: <br>";
+		if($DEBUG == "true" && $close_request == 'true'){
+			echo "<br> output from ServiceDesk Plus(closing request): <br>";
 			foreach($output as $x=>$x_val){
 				echo $x . ": " . $x_val . "<br>";
 			}

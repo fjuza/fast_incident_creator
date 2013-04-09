@@ -71,15 +71,17 @@
 				case 'CLOSE_REQUEST':
 						$status = $content->operation[0]->status;
 						$message = $content->operation[0]->message;
-						$arrReturn = array("status"=>$status, "message"=>$message);
+						$arrReturn = array("AMIHERECLOSEREQ?"=>"YES", "status"=>$status, "message"=>$message);
 						return $arrReturn;
 					break;
 
 				case 'ADD_REQUEST':
 						$status = $content->operation[0]->result->status;
 						$message = $content->operation[0]->result->message;
-						$workorderID = $content->operation[0]->details->workorderid;
-						$arrReturn = array("status"=>$status, "message"=>$message, "workorderID"=>$workorderID);
+						if($content->operation[0]->details->workorderid){
+							$workorderID = $content->operation[0]->details->workorderid;
+						}
+						$arrReturn = array("AMIHEREADDREQ?"=>"YES", "status"=>$status, "message"=>$message, "workorderID"=>$workorderID);
 						return $arrReturn;
 					break;
 			}
