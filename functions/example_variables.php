@@ -6,5 +6,6 @@
 	$password = "MightNotBeARealPassword!";
 	$dbName = "fastic";
 	$callbackURL = "http://localhost:8080/CustomReportHandler.do";
+	$techniciankey = "1337-ABCDE...";
 
 ?>

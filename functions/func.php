@@ -54,44 +54,36 @@
 	function close_request($url, $workorderID, $techniciankey){
 	// $url contains http://localhost:8080/sdpapi/request/<workorderid>
 	$url = $url . $workorderID;
-		$ch = curl_init();
-			curl_setopt($ch, CURLOPT_URL, $url);
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-			curl_setopt($ch, CURL_POST, 1);
-			curl_setopt($ch, CURLOPT_POSTFIELDS, "OPERATION_NAME=CLOSE_REQUEST"."?TECHNICIAN_KEY=".$techniciankey );
-		$output = curl_exec($ch);
+		$ch1 = curl_init();
+			curl_setopt($ch1, CURLOPT_URL, $url);
+			curl_setopt($ch1, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($ch1, CURLOPT_POST, 1);
+			curl_setopt($ch1, CURLOPT_POSTFIELDS, "OPERATION_NAME=CLOSE_REQUEST"."&TECHNICIAN_KEY=".$techniciankey );
+		$output = curl_exec($ch1);
 		
-		curl_close($ch);
+		curl_close($ch1);
 		return $output;
 	}
-	function get_sdpoutput($output){
-		xmllib_use_internal_errors(true);
-		try{
-			$content = new SimpleXMLElement($output);
-			foreach($content->operation as $operation){
-				switch((string) $operation['name']){
-					case 'CLOSE_REQUEST':
-							$status = $content->operation[0]->status;
-							$message = $content->operation[0]->message;
-							$arrReturn = array("AMIHERECLOSEREQ?"=>"YES", "status"=>$status, "message"=>$message);
-							return $arrReturn;
-						break;
 
-					case 'ADD_REQUEST':
-							$status = $content->operation[0]->result->status;
-							$message = $content->operation[0]->result->message;
-							if($content->operation[0]->details->workorderid){
-								$workorderID = $content->operation[0]->details->workorderid;
-							}
-							$arrReturn = array("AMIHEREADDREQ?"=>"YES", "status"=>$status, "message"=>$message, "workorderID"=>$workorderID);
-							return $arrReturn;
-						break;
-				}
-			}
-		} catch (exception $e) {
-			$returnArr = array("status"=>"error", "message"=>$e);
-			return $returnArr;
+	function Obj2Arr($arrObjData, $arrSkipInd = array()){
+		$arrData = array();
+		
+		//If input is object, convert into array
+		if(is_object($arrObjData)) {
+			$arrObjData = get_object_vars($arrObjData);
 		}
+		if(is_array($arrObjData)){
+			foreach($arrObjData as $index => $value ) {
+				if(is_object($value) || is_array($value)) {
+					$value = Obj2Arr($value, $arrSkipInd); //reqursive call
+				}
+				if(in_array($index, $arrSkipInd)) {
+					continue;
+				}
+				$arrData[$index] = $value;
+			}
+		}
+	return $arrData;
 	}
-
+	
 ?>

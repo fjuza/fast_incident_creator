@@ -1,6 +1,6 @@
 <?php
 //Set to true to get debug output. This is for development at the moment. But it might be useful when setting it up in new environments too.
-$DEBUG = "true";
+$DEBUG = "false";
 include_once('functions/mysqli_conn.php');
 include_once('functions/func.php');
 include('functions/variables.php');
@@ -8,7 +8,7 @@ if($DEBUG == "true"){
 	echo "<span>IN DEBUGMODE</span><br />";
 }
 
-if(isset($_POST['request']) && isset($_POST['requester']) && isset($_POST['technician']) && isset($_POST['technician_key']) ){
+if(isset($_POST['request']) && isset($_POST['requester']) && isset($_POST['technician']) ){
 
 	if($DEBUG == "true"){
 		echo "<br /> Check post-attributes: Ok <br />";
@@ -17,7 +17,6 @@ if(isset($_POST['request']) && isset($_POST['requester']) && isset($_POST['techn
 	$requests = $_POST['request'];
 	$requester = $_POST['requester'];
 	$technician = $_POST['technician'];
-	$techniciankey = $_POST['technician_key'];
 	if(isset($_POST['close_request'])){
 		$close_request = $_POST['close_request'];
 	} else {
@@ -77,31 +76,53 @@ if(isset($_POST['request']) && isset($_POST['requester']) && isset($_POST['techn
 			}
 			
 			$returnAddRequest = add_request($url, $post_input);
-			$output = get_sdpoutput($returnAddRequest);
-			
+			$xmlString = simplexml_load_string($returnAddRequest);
+			$output = Obj2arr($xmlString);
+			if(isset($output['result']['status']))
+			{
+				$name = $output['@attributes']['name'] ;
+				$status = $output['result']['status'];
+				$message = $output['result']['message'];
+				$workorderID = "n/a";
+			} else {
+				$name = $output['response']['operation']['@attributes']['name'];
+				$status = $output['response']['operation']['result']['status'];
+				$message = $output['response']['operation']['result']['message'];
+				$workorderID = $output['response']['operation']['Details']['0']['workorderid'];
+			}
 			if($DEBUG == "true"){
 				echo "<br> output from ServiceDesk Plus(adding request): <br>";
-				echo $output;
-				echo $returnAddRequest;
-				if(isset($output)){
-					foreach($output as $x=>$x_val){
-						echo $x . ": " . $x_val . "<br>";
-					}
-				}
+				echo  "Type: " . $name . "<br/>";
+				echo "Status: " .$status . "<br/>";
+				echo "Message: " . $message . "<br/>";
+				echo "WorkOrderID: " . $workorderID . "<br/>";
 			}
 		}
 	if( $close_request == 'true' && isset($workorderID) ){
 		$reqCloseConfirm = close_request($url, $workorderID, $techniciankey);
-		$output = get_sdpoutput($reqCloseConfirm);
+		$xmlString = simplexml_load_string($reqCloseConfirm);
+		$output = Obj2arr($xmlString);
+		if(isset($output['@attributes']['name'])){
+			$name = $output['@attributes']['name'];
+			$status = $output['result']['status'];
+			$message = $output['result']['message'];
+		} else {
+			$name = $output['response']['operation']['@attributes']['name'];
+			$status = $output['response']['operation']['result']['status'];
+			$message  = $output['response']['operation']['result']['message'];
+		}
 		
 		if($DEBUG == "true" && $close_request == 'true'){
-			echo "<br> output from ServiceDesk Plus(closing request): <br>";
-			foreach($output as $x=>$x_val){
-				echo $x . ": " . $x_val . "<br>";
-			}
+				echo "<br> output from ServiceDesk Plus(closing request): <br>";
+				echo "url: " . $url . "<br/>";
+				echo "workorderID: " . $workorderID . "<br/>";
+				echo "TechnicianKey: " . $techniciankey . "<br/>";
+				echo  "Type: " . $name . "<br/>";
+				echo "Status: " .$status . "<br/>";
+				echo "Message: " . $message . "<br/>";
 		}
 	}
-	//header('Location: http://localhost:8080/fastic/Fast_Incident_Creator/index.php');
+	header('Location: http://localhost:8080/fastic/index.php');
 	
 }
 

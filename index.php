@@ -26,14 +26,14 @@
 						}
 					?>
 				</select>
-				
+				<!--
 				<label>Technician Key
 				<span class="small">Select the technician key.</span>
 				</label>
 				<select name="technician_key" id="technician_key">
-					<option value="3F394415-32F0-4FD9-F44D-977A-C56F44D5A6F1">Freddie</option>
-					<option value="79C4E7D5-4BD9-427D-5050-BE56-4335050702AC">Erik</option>
-				</select>
+					<option value="3F394415-32F0-4FD9-977A-C56F44D5A6F1">Freddie</option>
+					<option value="79C4E7D5-4BD9-427D-BE56-4335050702AC">Erik</option>
+				</select>-->
 				
 				<label>Requester
 				<span class="small">Who submitted the request.</span>
