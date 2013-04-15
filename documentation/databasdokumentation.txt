@@ -1,22 +1,18 @@
 Database documentation
 
-	CREATE TABLE `fastic`.`Incidents` 
-		(
-		`id` int(4) NOT NULL AUTO_INCREMENT,
-		`subject` varchar(128),
-		`description` varchar(512),
-		`requesttemplate` varchar(128),
-		`group` varchar(32),
-		`level` varchar(32),
-		`status` varchar(32),
-		`mode` varchar(32),
-		`requesttype` varchar(128),
-		`category` varchar(32),
-		`subcategory` varchar(32),
-		`item` varchar(32),
-		`impact` varchar(32),
-		`urgency` varchar(32),
-		`priority` varchar(32),
-		PRIMARY KEY(`id`)
-		) ENGINE = INNODB;
-	
+Incidents
+	id
+	subject
+	description
+	requesttemplate
+	group
+	level
+	status
+	mode
+	requesttype
+	category
+	subcategory
+	item
+	impact
+	urgency
+	priority

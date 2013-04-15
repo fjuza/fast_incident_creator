@@ -14,7 +14,7 @@
 	?>
 	<head>
 	<body>
-	
+	<div id="stylized" class="commitForm">
 	<form action="addrequesttype.php" method="POST" id="form" name="form">
 		<label>Subject: </label><input name="subject" type="text"/>
 		<label>Description: </label><input name="description" type="textarea" rows="5" />
@@ -31,9 +31,9 @@
 		<label>Priority: </label><input name="priority" type="text" />
 		<input type="submit" value="Add Requesttype" name="add_requesttype" />
 	</form>
-	
+	</div>
 <?php
-	if(isset($_POST['subject']) && isset($_POST['requesttemplate']) && isset($_POST['mode'])&& isset($_POST['level']) && isset($_POST['category'] && isset($_POST['priority'])) )
+	if( isset($_POST['subject']) && isset($_POST['requesttemplate']) && isset($_POST['mode']) && isset($_POST['level']) && isset($_POST['category']) && isset($_POST['priority']) )
 	{
 		$content = array(
 			"subject"=>$_POST['subject'],
@@ -51,7 +51,7 @@
 			"impact"=>$_POST['priority']
 		);
 		$SQL = "INSERT INTO incidents ('subjects', 'description', 'requesttemplate', 'group', 'level', 'mode', 'requesttype', 'category', 'subcategory', 'item', 'impact', 'urgency', 'priority') VALUES (";
-		foreach($content as $x=>$x_val){
+		foreach($content as $x => $x_val){
 			if(isset($x_val)){
 				$SQL .= $x_val . ","; 
 			} else {

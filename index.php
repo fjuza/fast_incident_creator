@@ -8,6 +8,16 @@
 	<head>
 		<title><?php $title ?></title>
 		<link rel="stylesheet" type="text/css" href="style.css" />
+		<link rel="stylesheet" href="jquery/css/smoothness/jquery-ui-1.8.2.custom.css" /> 
+		<script type="text/javascript" src="jquery/js/jquery-1.4.2.min.js"></script> 
+		<script type="text/javascript" src="jquery/js/jquery-ui-1.8.2.custom.min.js"></script> 
+		<script type="text/javascript"> 
+			jQuery(document).ready(function(){
+				$('#requester').autocomplete({source:'search_ldap.php', minLength:3});
+				$('#technician').autocomplete({source:'search_ldap.php', minLength:3});
+			});
+	</script> 
+		
 	</head>
 	<body>
 		<div id="stylized" class="commitForm">
@@ -39,11 +49,11 @@
 				<span class="small">Who submitted the request.</span>
 				</label>
 				
-				<input type="text" name="requester" />
+				<input type="text" name="requester" id="requester" />
 				<label>Technician
 				<span class="small">Who recievied the request.</span>
 				</label>
-				<input type="text" name="technician" />
+				<input type="text" name="technician" id="technician" />
 				
 				<label>Close Request
 				<span class="small">Should the request be closed?</span>

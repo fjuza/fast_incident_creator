@@ -122,7 +122,7 @@ if(isset($_POST['request']) && isset($_POST['requester']) && isset($_POST['techn
 				echo "Message: " . $message . "<br/>";
 		}
 	}
-	header('Location: http://localhost:8080/fastic/index.php');
+	header('Location: http://sc1021:8080/fastic/index.php');
 	
 }
 
