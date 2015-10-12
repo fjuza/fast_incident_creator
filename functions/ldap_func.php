@@ -10,7 +10,7 @@ if($ds)
 	ldap_set_option($ds, LDAP_OPT_REFERRALS, 0);
 	ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, 3);
 	$r=ldap_bind($ds);
-	$sr = ldap_search($ds, "cn=Internal, cn=Standard User, cn=Users, cn=StudentConsulting, dc=studentconsulting, dc=net", "uid=*");
+	$sr = ldap_search($ds, "cn=Internal, cn=Standard User, cn=Users, cn=lab, dc=lab, dc=local", "uid=*");
 	
 	$info = ldap_get_entries($ds, $sr);
 	
