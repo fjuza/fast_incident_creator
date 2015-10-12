@@ -5,7 +5,7 @@
 		<requester></requester>
 		<subject></subject>
 		<description></description>
-		<callbackURL>http://helpdesk.studentconsulting.net/CustomReportHandler.do</callbackURL>
+		<callbackURL>http://helpdesk.lab.local/CustomReportHandler.do</callbackURL>
 		<requesttemplate></requesttemplate>
 		<technician></technician>
 		<group></group>
